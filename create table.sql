@@ -56,7 +56,7 @@ NOCYCLE;
 
 CREATE TABLE tournaments (
     tournament_id NUMBER(5),
-    tournament_name VARCHAR2(15),
+    tournament_title VARCHAR2(15),
     tournament_start_date DATE DEFAULT SYSDATE,
     tournament_end_date DATE,
     tournament_region VARCHAR2(15),
@@ -88,9 +88,9 @@ NOCYCLE;
 CREATE TABLE sponsors ( 
     sponsor_id NUMBER(5), 
     sponsor_name VARCHAR2(15), 
-    sponsor_type VARCHAR2(15), 
     sponsor_start_date DATE DEFAULT SYSDATE, 
-    sponsor_end_date DATE 
+    sponsor_end_date DATE,
+    sponsor_amount NUMBER(5)
 );
 
 CREATE SEQUENCE seq_sponsors
@@ -104,7 +104,8 @@ CREATE TABLE prizes (
     prize_id NUMBER(10),
     sponsor_id NUMBER(5),
     tournament_id NUMBER(5),
-    prize_amount NUMBER(10),
+    prize_money NUMBER(10),
+    prize_name VARCHAR2(0),
     prize_description VARCHAR2(150) 
 );
 
