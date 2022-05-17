@@ -34,7 +34,7 @@ MODIFY (prize_name NOT NULL)
 MODIFY (prize_description NOT NULL);
 
 ALTER TABLE games
-MODIFY (game_name NOT NULL);
+MODIFY (game_session_time NOT NULL);
 
 ALTER TABLE statistics
 MODIFY (game_duration NOT NULL)
@@ -227,9 +227,9 @@ ALTER TABLE sponsors
 ADD CONSTRAINT ck_sponsor_name
 CHECK (sponsor_name = UPPER(sponsor_name));
 
-ALTER TABLE games
-ADD CONSTRAINT ck_game_name
-CHECK (game_name = UPPER(game_name));
+ALTER TABLE sponsors
+ADD CONSTRAINT ck_sponsor_advert
+CHECK (sponsor_advert = UPPER(sponsor_advert));
 
 
 ALTER TABLE rounds

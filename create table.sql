@@ -13,19 +13,6 @@ MINVALUE 1
 MAXVALUE 99999
 NOCYCLE;
 
-CREATE TABLE teams (
-    team_id NUMBER(5),
-    team_name VARCHAR2(15),
-    date_created DATE DEFAULT SYSDATE
-);
-
-CREATE SEQUENCE seq_teams
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-MAXVALUE 99999
-NOCYCLE;
-
 CREATE TABLE team_players (
     team_player_id NUMBER(10),
     player_id NUMBER(5),
@@ -39,6 +26,20 @@ START WITH 1
 MINVALUE 1
 MAXVALUE 9999999999
 NOCYCLE;
+
+CREATE TABLE teams (
+    team_id NUMBER(5),
+    team_name VARCHAR2(15),
+    date_created DATE DEFAULT SYSDATE
+);
+
+CREATE SEQUENCE seq_teams
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 99999
+NOCYCLE;
+
 
 CREATE TABLE categories (
     genre_id NUMBER(5),
@@ -55,7 +56,7 @@ MAXVALUE 99999
 NOCYCLE;
 
 CREATE TABLE tournaments (
-    tournament_id NUMBER(5),
+    tournament_id NUMBER(10),
     tournament_title VARCHAR2(15),
     tournament_start_date DATE DEFAULT SYSDATE,
     tournament_end_date DATE,
@@ -68,7 +69,7 @@ CREATE SEQUENCE seq_tournaments
 INCREMENT BY 1
 START WITH 1
 MINVALUE 1
-MAXVALUE 99999
+MAXVALUE 9999999999
 NOCYCLE;
 
 CREATE TABLE tournament_participants (
@@ -90,7 +91,8 @@ CREATE TABLE sponsors (
     sponsor_name VARCHAR2(15), 
     sponsor_start_date DATE DEFAULT SYSDATE, 
     sponsor_end_date DATE,
-    sponsor_amount NUMBER(5)
+    sponsor_amount NUMBER(5),
+    sponsor_advert VARCHAR2(15)
 );
 
 CREATE SEQUENCE seq_sponsors
@@ -132,7 +134,7 @@ NOCYCLE;
 
 CREATE TABLE games (
     game_id NUMBER(10),
-    game_name VARCHAR2(15),
+    game_session_time NUMBER(10),
     round_id NUMBER(10)
 );
 
@@ -145,7 +147,7 @@ NOCYCLE;
 
 CREATE TABLE statistics (
     game_result_id NUMBER(10),
-    game_id NUMBER(5),
+    game_id NUMBER(10),
     game_duration NUMBER(10),
     game_coin NUMBER(5),
     game_distance NUMBER(5),
