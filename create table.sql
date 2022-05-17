@@ -42,7 +42,7 @@ NOCYCLE;
 
 CREATE TABLE categories (
     genre_id NUMBER(5),
-    genre_name VARCHAR2(15) DEFAULT SYSDATE,
+    genre_type VARCHAR2(15) DEFAULT SYSDATE,
     genre_description VARCHAR2(150)
     
 );
@@ -105,7 +105,7 @@ CREATE TABLE prizes (
     sponsor_id NUMBER(5),
     tournament_id NUMBER(5),
     prize_money NUMBER(10),
-    prize_name VARCHAR2(0),
+    prize_name VARCHAR2(10),
     prize_description VARCHAR2(150) 
 );
 
