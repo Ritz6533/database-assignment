@@ -118,23 +118,10 @@ MINVALUE 1
 MAXVALUE 9999999999
 NOCYCLE;
 
-CREATE TABLE rounds (
-    round_id NUMBER(10),
-    round_name VARCHAR2(25),
-    round_level VARCHAR2(25),
-    round_description VARCHAR2(150)
-);
-
-CREATE SEQUENCE seq_rounds
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-MAXVALUE 9999999999
-NOCYCLE;
 
 CREATE TABLE games (
     game_id NUMBER(10),
-    game_session_time NUMBER(10),
+    game_start_time NUMBER(10),
     round_id NUMBER(10)
 );
 
@@ -144,6 +131,21 @@ START WITH 1
 MINVALUE 1
 MAXVALUE 9999999999
 NOCYCLE;
+
+
+CREATE TABLE game_participants (
+    game_participant_id NUMBER(20),
+    game_id NUMBER(10),
+    tournament_participant_id NUMBER(10)
+);
+
+CREATE SEQUENCE seq_game_participants
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 99999999999999999999
+NOCYCLE;
+
 
 CREATE TABLE statistics (
     game_result_id NUMBER(10),
@@ -162,15 +164,16 @@ MINVALUE 1
 MAXVALUE 9999999999
 NOCYCLE;
 
-CREATE TABLE game_participants (
-    game_participant_id NUMBER(20),
-    game_id NUMBER(10),
-    tournament_participant_id NUMBER(10)
+CREATE TABLE rounds (
+    round_id NUMBER(10),
+    round_name VARCHAR2(25),
+    round_level VARCHAR2(25)DEFAULT SYSDATE,
+    round_description VARCHAR2(150)
 );
 
-CREATE SEQUENCE seq_game_participants
+CREATE SEQUENCE seq_rounds
 INCREMENT BY 1
 START WITH 1
 MINVALUE 1
-MAXVALUE 99999999999999999999
+MAXVALUE 9999999999
 NOCYCLE;
