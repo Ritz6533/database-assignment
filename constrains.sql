@@ -241,5 +241,17 @@ ADD CONSTRAINT ck_round_description
 CHECK (round_description = UPPER(round_description));
 
 /*default value*/
-ALTER TABLE rounds MODIFY(
-    round_level VARCHAR2 DEFAULT 'EASY');
+ALTER TABLE rounds 
+MODIFY(round_level VARCHAR2(10) DEFAULT 'EASY');
+
+ALTER TABLE team_players
+MODIFY (date_joined DEFAULT SYSDATE);
+
+ALTER TABLE teams
+MODIFY (date_created DEFAULT SYSDATE);
+
+ALTER TABLE categories
+MODIFY(genre_type VARCHAR2(15) DEFAULT 'TPP');
+
+ALTER TABLE tournaments
+MODIFY (tournament_start_date DEFAULT SYSDATE);
