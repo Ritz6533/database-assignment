@@ -34,7 +34,7 @@ MODIFY (prize_name NOT NULL)
 MODIFY (prize_description NOT NULL);
 
 ALTER TABLE games
-MODIFY (game_session_time NOT NULL);
+MODIFY (game_start_time NOT NULL);
 
 ALTER TABLE statistics
 MODIFY (game_duration NOT NULL)
@@ -239,3 +239,7 @@ CHECK (round_name = UPPER(round_name));
 ALTER TABLE rounds
 ADD CONSTRAINT ck_round_description
 CHECK (round_description = UPPER(round_description));
+
+/*default value*/
+ALTER TABLE rounds MODIFY(
+    round_level VARCHAR2 DEFAULT 'EASY');
