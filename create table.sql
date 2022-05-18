@@ -17,7 +17,7 @@ CREATE TABLE team_players (
     team_player_id NUMBER(10),
     player_id NUMBER(5),
     team_id NUMBER(5),
-    date_joined DATE DEFAULT SYSDATE
+    date_joined DATE
 );
 
 CREATE SEQUENCE seq_team_players
@@ -167,7 +167,7 @@ NOCYCLE;
 CREATE TABLE rounds (
     round_id NUMBER(10),
     round_name VARCHAR2(25),
-    round_level VARCHAR2(25)DEFAULT SYSDATE,
+    round_level VARCHAR2(10),
     round_description VARCHAR2(150)
 );
 
