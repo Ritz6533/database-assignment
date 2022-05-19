@@ -19,7 +19,6 @@ MODIFY (genre_description NOT NULL);
 ALTER TABLE tournaments
 MODIFY (tournament_title NOT NULL)
 MODIFY (tournament_start_date NOT NULL)
-MODIFY (tournament_end_date NOT NULL)
 MODIFY (tournament_region NOT NULL)
 MODIFY (tournament_arena NOT NULL);
 
@@ -260,3 +259,5 @@ MODIFY(genre_type VARCHAR2(15) DEFAULT 'TPP');
 
 ALTER TABLE tournaments
 MODIFY (tournament_start_date DEFAULT SYSDATE);
+
+/**/

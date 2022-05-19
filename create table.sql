@@ -96,7 +96,7 @@ NOCYCLE;
 
 CREATE TABLE prizes (
     sponsor_id NUMBER(5),
-    tournament_id NUMBER(5),
+    tournament_id NUMBER(10),
     prize_money NUMBER(10),
     prize_name VARCHAR2(10),
     prize_description VARCHAR2(150) 
