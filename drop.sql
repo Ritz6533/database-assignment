@@ -35,7 +35,7 @@ DROP CONSTRAINT fk_game_participants_tournament_participant_id;
 ALTER TABLE statistics
 DROP CONSTRAINT fk_statistics_game_id;
 
-/*drop primary key constraint*/
+/*drop primary and primary composite key constraint*/
 ALTER TABLE players
 DROP CONSTRAINT pk_players;
 
@@ -130,17 +130,14 @@ DROP CONSTRAINT uc_tournament_title;
 /*drop sequence*/
 
 DROP SEQUENCE seq_players;
-DROP SEQUENCE seq_team_players;
 DROP SEQUENCE seq_teams;
 DROP SEQUENCE seq_categories;
 DROP SEQUENCE seq_tournaments;
 DROP SEQUENCE seq_tournament_participants;
 DROP SEQUENCE seq_sponsors;
-DROP SEQUENCE seq_prizes;
 DROP SEQUENCE seq_rounds;
 DROP SEQUENCE seq_games;
 DROP SEQUENCE seq_statistics;
-DROP SEQUENCE seq_game_participants;
 
 /*drop table*/
 
