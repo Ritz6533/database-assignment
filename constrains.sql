@@ -47,15 +47,26 @@ MODIFY (round_name NOT NULL)
 MODIFY (round_level NOT NULL)
 MODIFY (round_description NOT NULL);
 
+
+-- alter composite primary keys
+ALTER TABLE team_players
+ADD CONSTRAINT pk_team_players
+PRIMARY KEY (player_id,team_id);
+
+
+ALTER TABLE prizes
+ADD CONSTRAINT pk_prizes
+PRIMARY KEY (sponsor_id,tournament_id);
+
+ALTER TABLE game_participants
+ADD CONSTRAINT pk_game_participants
+PRIMARY KEY (game_id,tournament_participant_id);
+
 -- alter primary keys
 
 ALTER TABLE players
 ADD CONSTRAINT pk_players
 PRIMARY KEY (player_id);
-
-ALTER TABLE team_players
-ADD CONSTRAINT pk_team_players
-PRIMARY KEY (team_player_id);
 
 ALTER TABLE teams
 ADD CONSTRAINT pk_teams
@@ -73,29 +84,23 @@ ALTER TABLE tournament_participants
 ADD CONSTRAINT pk_tournament_participants
 PRIMARY KEY (tournament_participant_id);
 
+ALTER TABLE games
+ADD CONSTRAINT pk_games
+PRIMARY KEY (game_id); 
+
 ALTER TABLE sponsors
 ADD CONSTRAINT pk_sponsors
 PRIMARY KEY (sponsor_id);
-
-ALTER TABLE prizes
-ADD CONSTRAINT pk_prizes
-PRIMARY KEY (prize_id);
 
 ALTER TABLE rounds
 ADD CONSTRAINT pk_rounds
 PRIMARY KEY (round_id);
 
-ALTER TABLE games
-ADD CONSTRAINT pk_games
-PRIMARY KEY (game_id);
-
 ALTER TABLE statistics
 ADD CONSTRAINT pk_statistics
 PRIMARY KEY (game_result_id);
 
-ALTER TABLE game_participants
-ADD CONSTRAINT pk_game_participants
-PRIMARY KEY (game_participant_id);
+
 
 -- alter unique
 
