@@ -14,11 +14,18 @@ MAXVALUE 99999
 NOCYCLE;
 
 CREATE TABLE team_players (
+    team_player_id NUMBER(10),
     player_id NUMBER(5),
     team_id NUMBER(5),
     date_joined DATE
 );
 
+CREATE SEQUENCE seq_team_players
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 9999999999
+NOCYCLE;
 
 CREATE TABLE teams (
     team_id NUMBER(5),
@@ -37,8 +44,7 @@ NOCYCLE;
 CREATE TABLE categories (
     genre_id NUMBER(5),
     genre_type VARCHAR2(15) DEFAULT SYSDATE,
-    genre_description VARCHAR2(150)
-    
+    genre_description VARCHAR2(150)   
 );
 
 CREATE SEQUENCE seq_categories
@@ -95,12 +101,21 @@ MAXVALUE 99999
 NOCYCLE;
 
 CREATE TABLE prizes (
+    prize_id NUMBER(10),
     sponsor_id NUMBER(5),
     tournament_id NUMBER(10),
     prize_money NUMBER(10),
     prize_name VARCHAR2(10),
     prize_description VARCHAR2(150) 
 );
+
+CREATE SEQUENCE seq_prizes
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 99999
+NOCYCLE;
+
 
 
 
@@ -119,24 +134,32 @@ NOCYCLE;
 
 
 CREATE TABLE game_participants (
+    game_participant_id NUMBER(20),
     game_id NUMBER(10),
     tournament_participant_id NUMBER(10)
 );
 
+CREATE SEQUENCE seq_game_participants
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 9999999999
+NOCYCLE;
 
 
 
-CREATE TABLE statistics (
+
+
+CREATE TABLE stats (
     game_result_id NUMBER(10),
     game_id NUMBER(10),
     game_duration NUMBER(10),
     game_coin NUMBER(5),
     game_distance NUMBER(5),
     game_kill NUMBER(5)
-    
 );
 
-CREATE SEQUENCE seq_statistics
+CREATE SEQUENCE seq_stats
 INCREMENT BY 1
 START WITH 1
 MINVALUE 1
