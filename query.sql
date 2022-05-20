@@ -1,4 +1,8 @@
-SELECT supplier_city  
-FROM suppliers  
-WHERE supplier_name = 'IBM'  
-ORDER BY supplier_city DESC; 
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY'
+
+ALTER SESSION
+SET PAGESIZE 60;
+SET LINESIZE 132;
+SET WRAP OFF;
+
+SELECT * FROM table_name WHERE table_name="&table_name";

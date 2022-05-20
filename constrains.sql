@@ -22,20 +22,20 @@ MODIFY (tournament_start_date NOT NULL)
 MODIFY (tournament_region NOT NULL)
 MODIFY (tournament_arena NOT NULL);
 
-ALTER TABLE sponsors
-MODIFY (sponsor_name NOT NULL)
-MODIFY (sponsor_start_date NOT NULL)
-MODIFY (sponsor_amount NOT NULL);
-
 ALTER TABLE prizes
 MODIFY (prize_money NOT NULL)
 MODIFY (prize_name NOT NULL)
 MODIFY (prize_description NOT NULL);
 
+ALTER TABLE sponsors
+MODIFY (sponsor_name NOT NULL)
+MODIFY (sponsor_start_date NOT NULL)
+MODIFY (sponsor_amount NOT NULL);
+
 ALTER TABLE games
 MODIFY (game_start_time NOT NULL);
 
-ALTER TABLE statistics
+ALTER TABLE stats
 MODIFY (game_duration NOT NULL)
 MODIFY (game_coin NOT NULL)
 MODIFY (game_distance NOT NULL)
@@ -46,20 +46,6 @@ MODIFY (round_name NOT NULL)
 MODIFY (round_level NOT NULL)
 MODIFY (round_description NOT NULL);
 
-
--- alter composite primary keys
-ALTER TABLE team_players
-ADD CONSTRAINT pk_team_players
-PRIMARY KEY (player_id,team_id);
-
-
-ALTER TABLE prizes
-ADD CONSTRAINT pk_prizes
-PRIMARY KEY (sponsor_id,tournament_id);
-
-ALTER TABLE game_participants
-ADD CONSTRAINT pk_game_participants
-PRIMARY KEY (game_id,tournament_participant_id);
 
 -- alter primary keys
 
@@ -95,10 +81,22 @@ ALTER TABLE rounds
 ADD CONSTRAINT pk_rounds
 PRIMARY KEY (round_id);
 
-ALTER TABLE statistics
-ADD CONSTRAINT pk_statistics
+ALTER TABLE stats
+ADD CONSTRAINT pk_stats
 PRIMARY KEY (game_result_id);
 
+ALTER TABLE team_players
+ADD CONSTRAINT pk_team_players
+PRIMARY KEY (team_player_id);
+
+
+ALTER TABLE prizes
+ADD CONSTRAINT pk_prizes
+PRIMARY KEY (prize_id);
+
+ALTER TABLE game_participants
+ADD CONSTRAINT pk_game_participants
+PRIMARY KEY (game_participant_id);
 
 
 -- alter unique
@@ -137,17 +135,17 @@ FOREIGN KEY (genre_id)
 REFERENCES categories(genre_id);
 
 ALTER TABLE tournament_participants
-ADD CONSTRAINT fk_tournament_participants_tournament_id
+ADD CONSTRAINT fk_tp_tournament_id
 FOREIGN KEY (tournament_id)
 REFERENCES tournaments(tournament_id);
 
 ALTER TABLE tournament_participants
-ADD CONSTRAINT fk_tournament_participants_player_id
+ADD CONSTRAINT fk_tp_player_id
 FOREIGN KEY (player_id)
 REFERENCES players(player_id);
 
 ALTER TABLE tournament_participants
-ADD CONSTRAINT fk_tournament_participants_team_id
+ADD CONSTRAINT fk_tp_team_id
 FOREIGN KEY (team_id)
 REFERENCES teams(team_id);
 
@@ -166,18 +164,18 @@ ADD CONSTRAINT fk_games_round_id
 FOREIGN KEY (round_id)
 REFERENCES rounds(round_id);
 
-ALTER TABLE statistics
-ADD CONSTRAINT fk_statistics_game_id
+ALTER TABLE stats
+ADD CONSTRAINT fk_stat_game_id
 FOREIGN KEY (game_id)
 REFERENCES games(game_id);
 
 ALTER TABLE game_participants
-ADD CONSTRAINT fk_game_participants_game_id
+ADD CONSTRAINT fk_gp_game_id
 FOREIGN KEY (game_id)
 REFERENCES games(game_id);
 
 ALTER TABLE game_participants
-ADD CONSTRAINT fk_game_participants_tournament_participant_id
+ADD CONSTRAINT fk_gp_tp_id
 FOREIGN KEY (tournament_participant_id)
 REFERENCES tournament_participants(tournament_participant_id);
 
@@ -243,8 +241,7 @@ CHECK (round_name = UPPER(round_name));
 ALTER TABLE rounds
 ADD CONSTRAINT ck_round_description
 CHECK (round_description = UPPER(round_description));
-
-/*default value*/
+ /*adding default value*/
 ALTER TABLE rounds 
 MODIFY(round_level VARCHAR2(10) DEFAULT 'EASY');
 

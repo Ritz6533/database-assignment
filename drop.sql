@@ -11,11 +11,11 @@ ALTER TABLE tournaments
 DROP CONSTRAINT fk_tournaments_genre_id;
 
 ALTER TABLE tournament_participants
-DROP CONSTRAINT fk_tournament_participants_player_id;
+DROP CONSTRAINT fk_tp_player_id;
 ALTER TABLE tournament_participants
-DROP CONSTRAINT fk_tournament_participants_team_id;
+DROP CONSTRAINT fk_tp_team_id;
 ALTER TABLE tournament_participants
-DROP CONSTRAINT fk_tournament_participants_tournament_id;
+DROP CONSTRAINT fk_tp_tournament_id;
 
 ALTER TABLE prizes
 DROP CONSTRAINT fk_prizes_sponsor_id;
@@ -28,14 +28,14 @@ DROP CONSTRAINT fk_games_round_id;
 
 
 ALTER TABLE game_participants
-DROP CONSTRAINT fk_game_participants_game_id;
+DROP CONSTRAINT fk_gp_game_id;
 ALTER TABLE game_participants
-DROP CONSTRAINT fk_game_participants_tournament_participant_id;
+DROP CONSTRAINT fk_gp_tp_id;
 
-ALTER TABLE statistics
-DROP CONSTRAINT fk_statistics_game_id;
+ALTER TABLE stats
+DROP CONSTRAINT fk_stat_game_id;
 
-/*drop primary and primary composite key constraint*/
+/*drop primary key constraint*/
 ALTER TABLE players
 DROP CONSTRAINT pk_players;
 
@@ -66,13 +66,11 @@ DROP CONSTRAINT pk_games;
 ALTER TABLE game_participants
 DROP CONSTRAINT pk_game_participants;
 
-ALTER TABLE statistics
-DROP CONSTRAINT pk_statistics;
+ALTER TABLE stats
+DROP CONSTRAINT pk_stats;
 
 ALTER TABLE rounds
 DROP CONSTRAINT pk_rounds;
-
-
 
 
 /*drop check constraint*/
@@ -113,7 +111,6 @@ DROP CONSTRAINT ck_round_name;
 ALTER TABLE rounds
 DROP CONSTRAINT ck_round_description;
 
-
 /*drop unique constrains*/
 ALTER TABLE players
 DROP CONSTRAINT uc_contact_email;
@@ -130,14 +127,17 @@ DROP CONSTRAINT uc_tournament_title;
 /*drop sequence*/
 
 DROP SEQUENCE seq_players;
+DROP SEQUENCE seq_team_players;
 DROP SEQUENCE seq_teams;
 DROP SEQUENCE seq_categories;
 DROP SEQUENCE seq_tournaments;
 DROP SEQUENCE seq_tournament_participants;
+DROP SEQUENCE seq_prizes;
 DROP SEQUENCE seq_sponsors;
 DROP SEQUENCE seq_rounds;
 DROP SEQUENCE seq_games;
-DROP SEQUENCE seq_statistics;
+DROP SEQUENCE seq_game_participants;
+DROP SEQUENCE seq_stats;
 
 /*drop table*/
 
@@ -161,7 +161,7 @@ DROP TABLE game_participants;
 
 DROP TABLE games;
 
-DROP TABLE statistics;
+DROP TABLE stats;
 
 DROP TABLE rounds;
 
