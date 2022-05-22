@@ -1,4 +1,4 @@
-/*addding data to the database*/
+--addding data to the database
 INSERT INTO players (player_id, player_fname, player_lname, contact_email, contact_number)
 VALUES (1, 'AAAAA', 'BBBBB', 'AABB@GMAIL.COM', 12345678923);  
 
@@ -37,7 +37,8 @@ VALUES (599, 7, 98);
 INSERT INTO stats (game_result_id, game_id, game_duration, game_coin, game_distance, game_kill)
 VALUES (121456784, 7, 50, 500, 15000, 15);
 
-/**/
+
+
 INSERT INTO players (player_id, player_fname, player_lname, contact_email, contact_number)
 VALUES (2, 'CCCCC', 'DDDDD', 'CCDD@GMAIL.COM', 12345678924);  
 
@@ -78,8 +79,9 @@ VALUES (89852, 55, 40, 5600, 99550, 10);
 
 
  
-/*insert data in different way
-adding game id data to team player id with condition */
+--insert data in different way
+--adding game id data to team player id with condition 
+
 INSERT INTO team_players
 (team_player_id)
 SELECT  game_id

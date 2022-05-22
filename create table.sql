@@ -1,14 +1,13 @@
---creating tables
+/*creating tables and sequences*/
 
 CREATE TABLE players (
     player_id NUMBER(5),
     player_fname VARCHAR2(15),
     player_lname VARCHAR2(15),
     contact_email VARCHAR2(25),
-    contact_number CHAR(13)
+    contact_number VARCHAR2(13)
 );
 
---creating sequence table*/
 CREATE SEQUENCE seq_players
 INCREMENT BY 1
 START WITH 1
@@ -149,9 +148,6 @@ START WITH 1
 MINVALUE 1
 MAXVALUE 9999999999
 NOCYCLE;
-
-
-
 
 
 CREATE TABLE stats (

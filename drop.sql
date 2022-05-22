@@ -1,4 +1,4 @@
-/*drop check constraint*/
+--drop check constraint
 ALTER TABLE players
 DROP CONSTRAINT ck_player_fname;
 ALTER TABLE players
@@ -34,7 +34,7 @@ DROP CONSTRAINT ck_sponsor_advert;
 ALTER TABLE rounds
 DROP CONSTRAINT ck_round_description;
 
-/*drop unique constrains*/
+--drop unique constrains
 ALTER TABLE players
 DROP CONSTRAINT uc_contact_email;
 ALTER TABLE players
@@ -46,7 +46,7 @@ DROP CONSTRAINT uc_prize_name;
 ALTER TABLE tournaments
 DROP CONSTRAINT uc_tournament_title;
 
-/*drop foregin key constraint*/
+--drop foregin key constraint
 
 ALTER TABLE team_players
 DROP CONSTRAINT fk_team_players_player_id;
@@ -82,7 +82,8 @@ DROP CONSTRAINT fk_gp_tp_id;
 ALTER TABLE stats
 DROP CONSTRAINT fk_stat_game_id;
 
-/*drop primary key constraint*/
+--drop primary key constraint
+
 ALTER TABLE players
 DROP CONSTRAINT pk_players;
 
@@ -120,7 +121,7 @@ ALTER TABLE rounds
 DROP CONSTRAINT pk_rounds;
 
 
-/*drop sequence*/
+--drop sequence
 
 DROP SEQUENCE seq_players;
 DROP SEQUENCE seq_team_players;
@@ -135,7 +136,7 @@ DROP SEQUENCE seq_games;
 DROP SEQUENCE seq_game_participants;
 DROP SEQUENCE seq_stats;
 
-/*drop table*/
+--drop table
 
 DROP TABLE players;
 
