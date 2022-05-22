@@ -81,10 +81,3 @@ VALUES (89852, 55, 40, 5600, 99550, 10);
  
 --insert data in different way
 --adding game id data to team player id with condition 
-
-INSERT INTO team_players
-(team_player_id)
-SELECT  game_id
-FROM stats
-WHERE game_kill < 50;
-

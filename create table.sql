@@ -1,11 +1,11 @@
-/*creating tables and sequences*/
+--creating tables and sequences
 
 CREATE TABLE players (
     player_id NUMBER(5),
     player_fname VARCHAR2(15),
     player_lname VARCHAR2(15),
     contact_email VARCHAR2(25),
-    contact_number VARCHAR2(13)
+    contact_number CHAR(13)
 );
 
 CREATE SEQUENCE seq_players
