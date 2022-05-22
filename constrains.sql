@@ -1,5 +1,10 @@
+--compound primary key
 
-/* alter primary key */
+ALTER TABLE rounds
+ADD CONSTRAINT pk_rounds
+PRIMARY KEY (round_id, round_name);
+
+--alter primary key 
 
 ALTER TABLE players
 ADD CONSTRAINT pk_players
@@ -46,12 +51,9 @@ ALTER TABLE game_participants
 ADD CONSTRAINT pk_game_participants
 PRIMARY KEY (game_participant_id);
 
-/*compound primary key*/
-ALTER TABLE rounds
-ADD CONSTRAINT pk_rounds
-PRIMARY KEY (round_id,round_name);
 
-/*adding foreign keys*/
+
+--adding foreign keys
 
 ALTER TABLE team_players
 ADD CONSTRAINT fk_team_players_player_id
@@ -108,13 +110,14 @@ ADD CONSTRAINT fk_gp_tp_id
 FOREIGN KEY (tournament_participant_id)
 REFERENCES tournament_participants(tournament_participant_id);
 
-/*compound foreign key*/
+--compound foreign key
+
 ALTER TABLE games
 ADD CONSTRAINT fk_games_round
 FOREIGN KEY (round_id,round_name)
 REFERENCES rounds(round_id,round_name);
 
-/*alter adding unique*/
+--alter adding unique
 
 ALTER TABLE players
 ADD CONSTRAINT uc_contact_email
@@ -132,55 +135,8 @@ ALTER TABLE tournaments
 ADD CONSTRAINT uc_tournament_title
 UNIQUE (tournament_title);
 
-/*adding not null condition*/
-ALTER TABLE players
-MODIFY (player_fname NOT NULL)
-MODIFY (player_lname NOT NULL)
-MODIFY (contact_email NOT NULL)
-MODIFY (contact_number NOT NULL);
 
-ALTER TABLE team_players
-MODIFY (date_joined NOT NULL);
-
-ALTER TABLE teams
-MODIFY (team_name NOT NULL)
-MODIFY (date_created NOT NULL);
-
-ALTER TABLE categories
-MODIFY (genre_type NOT NULL)
-MODIFY (genre_description NOT NULL);
-
-ALTER TABLE tournaments
-MODIFY (tournament_title NOT NULL)
-MODIFY (tournament_start_date NOT NULL)
-MODIFY (tournament_region NOT NULL)
-MODIFY (tournament_arena NOT NULL);
-
-ALTER TABLE prizes
-MODIFY (prize_money NOT NULL)
-MODIFY (prize_name NOT NULL)
-MODIFY (prize_description NOT NULL);
-
-ALTER TABLE sponsors
-MODIFY (sponsor_name NOT NULL)
-MODIFY (sponsor_start_date NOT NULL)
-MODIFY (sponsor_amount NOT NULL);
-
-ALTER TABLE games
-MODIFY (game_start_time NOT NULL);
-
-ALTER TABLE stats
-MODIFY (game_duration NOT NULL)
-MODIFY (game_coin NOT NULL)
-MODIFY (game_distance NOT NULL)
-MODIFY (game_kill NOT NULL);
-
-ALTER TABLE rounds
-MODIFY (round_level NOT NULL)
-MODIFY (round_description NOT NULL);
-
-
-/*check*/
+--check
 
 ALTER TABLE players
 ADD CONSTRAINT ck_player_fname
@@ -239,7 +195,7 @@ ALTER TABLE rounds
 ADD CONSTRAINT ck_round_description
 CHECK (round_description = UPPER(round_description));
 
-/*adding default value*/
+--adding default value
 
 ALTER TABLE rounds 
 MODIFY(round_level VARCHAR2(10) DEFAULT 'EASY');
@@ -255,3 +211,51 @@ MODIFY(genre_type VARCHAR2(15) DEFAULT 'TPP');
 
 ALTER TABLE tournaments
 MODIFY (tournament_start_date DEFAULT SYSDATE);
+
+--adding not null condition
+
+ALTER TABLE players
+MODIFY (player_fname NOT NULL)
+MODIFY (player_lname NOT NULL)
+MODIFY (contact_email NOT NULL)
+MODIFY (contact_number NOT NULL);
+
+ALTER TABLE team_players
+MODIFY (date_joined NOT NULL);
+
+ALTER TABLE teams
+MODIFY (team_name NOT NULL)
+MODIFY (date_created NOT NULL);
+
+ALTER TABLE categories
+MODIFY (genre_type NOT NULL)
+MODIFY (genre_description NOT NULL);
+
+ALTER TABLE tournaments
+MODIFY (tournament_title NOT NULL)
+MODIFY (tournament_start_date NOT NULL)
+MODIFY (tournament_region NOT NULL)
+MODIFY (tournament_arena NOT NULL);
+
+ALTER TABLE prizes
+MODIFY (prize_money NOT NULL)
+MODIFY (prize_name NOT NULL)
+MODIFY (prize_description NOT NULL);
+
+ALTER TABLE sponsors
+MODIFY (sponsor_name NOT NULL)
+MODIFY (sponsor_start_date NOT NULL)
+MODIFY (sponsor_amount NOT NULL);
+
+ALTER TABLE games
+MODIFY (game_start_time NOT NULL);
+
+ALTER TABLE stats
+MODIFY (game_duration NOT NULL)
+MODIFY (game_coin NOT NULL)
+MODIFY (game_distance NOT NULL)
+MODIFY (game_kill NOT NULL);
+
+ALTER TABLE rounds
+MODIFY (round_level NOT NULL)
+MODIFY (round_description NOT NULL);

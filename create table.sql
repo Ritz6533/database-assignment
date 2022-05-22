@@ -1,4 +1,4 @@
-/*creating tables*/
+--creating tables
 
 CREATE TABLE players (
     player_id NUMBER(5),
@@ -7,7 +7,8 @@ CREATE TABLE players (
     contact_email VARCHAR2(25),
     contact_number CHAR(13)
 );
-/*creating sequence table*/
+
+--creating sequence table*/
 CREATE SEQUENCE seq_players
 INCREMENT BY 1
 START WITH 1
