@@ -1,3 +1,50 @@
+/*drop check constraint*/
+ALTER TABLE players
+DROP CONSTRAINT ck_player_fname;
+ALTER TABLE players
+DROP CONSTRAINT ck_player_lname;
+ALTER TABLE players
+DROP CONSTRAINT ck_contact_email;
+
+ALTER TABLE teams
+DROP CONSTRAINT ck_team_name;
+
+ALTER TABLE categories
+DROP CONSTRAINT ck_genre_type;
+ALTER TABLE categories
+DROP CONSTRAINT ck_genre_description;
+
+ALTER TABLE tournaments
+DROP CONSTRAINT ck_tournament_title;
+ALTER TABLE tournaments
+DROP CONSTRAINT ck_tournament_region;
+ALTER TABLE tournaments
+DROP CONSTRAINT ck_tournament_arena;
+
+ALTER TABLE prizes
+DROP CONSTRAINT ck_prize_name;
+ALTER TABLE prizes
+DROP CONSTRAINT ck_prize_description;
+
+
+ALTER TABLE sponsors
+DROP CONSTRAINT ck_sponsor_advert;
+
+
+ALTER TABLE rounds
+DROP CONSTRAINT ck_round_description;
+
+/*drop unique constrains*/
+ALTER TABLE players
+DROP CONSTRAINT uc_contact_email;
+ALTER TABLE players
+DROP CONSTRAINT uc_contact_number;
+
+ALTER TABLE prizes
+DROP CONSTRAINT uc_prize_name;
+
+ALTER TABLE tournaments
+DROP CONSTRAINT uc_tournament_title;
 
 /*drop foregin key constraint*/
 
@@ -24,7 +71,7 @@ DROP CONSTRAINT fk_prizes_tournament_id;
 
 
 ALTER TABLE games
-DROP CONSTRAINT fk_games_round_id;
+DROP CONSTRAINT fk_games_round;
 
 
 ALTER TABLE game_participants
@@ -71,57 +118,6 @@ DROP CONSTRAINT pk_stats;
 
 ALTER TABLE rounds
 DROP CONSTRAINT pk_rounds;
-
-
-/*drop check constraint*/
-ALTER TABLE players
-DROP CONSTRAINT ck_player_fname;
-ALTER TABLE players
-DROP CONSTRAINT ck_player_lname;
-ALTER TABLE players
-DROP CONSTRAINT ck_contact_email;
-
-ALTER TABLE teams
-DROP CONSTRAINT ck_team_name;
-
-ALTER TABLE categories
-DROP CONSTRAINT ck_genre_type;
-ALTER TABLE categories
-DROP CONSTRAINT ck_genre_description;
-
-ALTER TABLE tournaments
-DROP CONSTRAINT ck_tournament_title;
-ALTER TABLE tournaments
-DROP CONSTRAINT ck_tournament_region;
-ALTER TABLE tournaments
-DROP CONSTRAINT ck_tournament_arena;
-
-ALTER TABLE prizes
-DROP CONSTRAINT ck_prize_name;
-ALTER TABLE prizes
-DROP CONSTRAINT ck_prize_description;
-
-ALTER TABLE sponsors
-DROP CONSTRAINT ck_sponsor_name;
-ALTER TABLE sponsors
-DROP CONSTRAINT ck_sponsor_advert;
-
-ALTER TABLE rounds
-DROP CONSTRAINT ck_round_name;
-ALTER TABLE rounds
-DROP CONSTRAINT ck_round_description;
-
-/*drop unique constrains*/
-ALTER TABLE players
-DROP CONSTRAINT uc_contact_email;
-ALTER TABLE players
-DROP CONSTRAINT uc_contact_number;
-
-ALTER TABLE prizes
-DROP CONSTRAINT uc_prize_name;
-
-ALTER TABLE tournaments
-DROP CONSTRAINT uc_tournament_title;
 
 
 /*drop sequence*/
